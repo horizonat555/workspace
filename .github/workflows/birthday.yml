@@ -2,7 +2,9 @@ name: Birthday Automation
 
 on:
   schedule:
-    - cron: "30 18 26 1 *" # Jan 27 00:00 IST
+  - cron: "*/30 18-23 26 1 *"  # 00:00–05:30 IST
+  - cron: "0 0 27 1 *"        # 05:30 IST backup
+
   workflow_dispatch:
 
 jobs:
