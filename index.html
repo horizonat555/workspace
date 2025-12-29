@@ -1,35 +1,1012 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Happy Birthday 🎉</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    h1 {
-      font-size: 3rem;
-    }
-    p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 17th Birthday Gyan! 🎉</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #2d1b69 75%, #1a1a2e 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        #fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .hero-content {
+            animation: zoomBoom 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .hero h1 {
+            font-size: 5em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #4ecdc4, #a78bfa, #ff6b6b);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 4s ease infinite, pulse 2s ease-in-out infinite;
+            font-weight: bold;
+            letter-spacing: 5px;
+            position: relative;
+        }
+
+        .hero h2 {
+            font-size: 3.5em;
+            color: #ffd93d;
+            margin-bottom: 20px;
+            animation: slideUp 1s ease 0.3s both, neonGlow 2s ease-in-out infinite;
+            text-shadow: 0 0 20px #ffd93d, 0 0 40px #ffd93d;
+            letter-spacing: 8px;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            color: #ddd;
+            animation: slideUp 1s ease 0.6s both;
+            letter-spacing: 2px;
+        }
+
+        .birthday-number {
+            font-size: 12em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            animation: bounce 2s ease infinite, rotate3d 4s ease-in-out infinite;
+            margin: 30px 0;
+            filter: drop-shadow(0 0 30px rgba(102, 126, 234, 0.8));
+            transform-style: preserve-3d;
+        }
+
+        .cake-section {
+            text-align: center;
+            padding: 60px 20px;
+            animation: fadeIn 1.5s ease;
+            position: relative;
+        }
+
+        .cake-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .cake {
+            font-size: 150px;
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+            filter: drop-shadow(0 15px 30px rgba(255, 107, 107, 0.5));
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .cake:hover {
+            animation: shake 0.5s ease infinite, float 3s ease-in-out infinite;
+        }
+
+        .candle-flame {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px;
+            animation: flicker 0.5s ease-in-out infinite;
+        }
+
+        .message-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            padding: 60px 20px;
+            animation: fadeIn 2s ease;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slideUp 1s ease both;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s linear infinite;
+        }
+
+        .card:nth-child(1) { 
+            animation-delay: 0.2s; 
+            border-color: rgba(255, 107, 107, 0.3);
+        }
+        .card:nth-child(2) { 
+            animation-delay: 0.4s; 
+            border-color: rgba(255, 217, 61, 0.3);
+        }
+        .card:nth-child(3) { 
+            animation-delay: 0.6s; 
+            border-color: rgba(78, 205, 196, 0.3);
+        }
+
+        .card:hover {
+            transform: translateY(-20px) rotateX(5deg) rotateY(5deg) scale(1.05);
+            box-shadow: 0 30px 60px rgba(255, 107, 107, 0.4), 0 0 50px rgba(255, 107, 107, 0.2);
+            border-color: rgba(255, 107, 107, 0.6);
+        }
+
+        .card-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: iconFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 10px 20px rgba(255, 107, 107, 0.3));
+        }
+
+        .card h3 {
+            color: #ffd93d;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-shadow: 0 0 10px rgba(255, 217, 61, 0.5);
+        }
+
+        .card p {
+            color: #ddd;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        .balloons {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .balloon {
+            position: absolute;
+            font-size: 60px;
+            animation: float-up 12s ease-in infinite;
+            opacity: 0.8;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+        }
+
+        .balloon:nth-child(1) { left: 5%; animation-delay: 0s; }
+        .balloon:nth-child(2) { left: 15%; animation-delay: 2s; }
+        .balloon:nth-child(3) { left: 25%; animation-delay: 4s; }
+        .balloon:nth-child(4) { left: 35%; animation-delay: 1s; }
+        .balloon:nth-child(5) { left: 45%; animation-delay: 3s; }
+        .balloon:nth-child(6) { left: 55%; animation-delay: 5s; }
+        .balloon:nth-child(7) { left: 65%; animation-delay: 1.5s; }
+        .balloon:nth-child(8) { left: 75%; animation-delay: 3.5s; }
+        .balloon:nth-child(9) { left: 85%; animation-delay: 2.5s; }
+        .balloon:nth-child(10) { left: 95%; animation-delay: 4.5s; }
+
+        .confetti {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: #ffd93d;
+            animation: confetti-fall 6s linear infinite;
+            opacity: 0.9;
+        }
+
+        .photo-gallery {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .photo-gallery h2 {
+            animation: slideIn 1s ease, neonPulse 3s ease-in-out infinite;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .photo-placeholder {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5em;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 2s linear infinite;
+        }
+
+        .photo-placeholder:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.6);
+        }
+
+        .countdown {
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 30px;
+            margin: 40px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+        }
+
+        .countdown::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: slide 3s linear infinite;
+        }
+
+        .countdown h3 {
+            color: #ffd93d;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            animation: neonGlow 2s ease-in-out infinite;
+            text-shadow: 0 0 20px #ffd93d;
+        }
+
+        .countdown p {
+            font-size: 1.3em;
+            line-height: 2.2;
+            color: #ddd;
+            margin-top: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+            font-size: 1.2em;
+            position: relative;
+        }
+
+        .footer h2 {
+            color: #ffd93d;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            animation: bounce 2s ease infinite;
+            text-shadow: 0 0 20px #ffd93d;
+        }
+
+        .footer p {
+            margin: 15px 0;
+            animation: fadeIn 2s ease;
+        }
+
+        .particle {
+            position: fixed;
+            width: 5px;
+            height: 5px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: particleFloat 3s ease-out forwards;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes zoomBoom {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotate(-180deg);
+            }
+            60% {
+                transform: scale(1.2) rotate(10deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            25% { transform: translateY(-30px) scale(1.05); }
+            50% { transform: translateY(0) scale(1); }
+            75% { transform: translateY(-15px) scale(1.02); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+            }
+            25% { 
+                transform: translateY(-30px) rotate(-5deg); 
+            }
+            50% { 
+                transform: translateY(-40px) rotate(0deg); 
+            }
+            75% { 
+                transform: translateY(-30px) rotate(5deg); 
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(-10px) rotate(-5deg); }
+            75% { transform: translateX(10px) rotate(5deg); }
+        }
+
+        @keyframes rotate3d {
+            0%, 100% { transform: rotateY(0deg) rotateX(0deg); }
+            25% { transform: rotateY(90deg) rotateX(10deg); }
+            50% { transform: rotateY(180deg) rotateX(0deg); }
+            75% { transform: rotateY(270deg) rotateX(-10deg); }
+        }
+
+        @keyframes float-up {
+            0% {
+                bottom: -150px;
+                opacity: 0;
+                transform: translateX(0) rotate(0deg);
+            }
+            10% {
+                opacity: 0.9;
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(30px) rotate(180deg);
+            }
+            100% {
+                bottom: 120%;
+                opacity: 0;
+                transform: translateX(-30px) rotate(360deg);
+            }
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                top: -10%;
+                transform: rotate(0deg) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                top: 110%;
+                transform: rotate(720deg) translateX(100px);
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes neonGlow {
+            0%, 100% {
+                text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+            }
+            50% {
+                text-shadow: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor;
+            }
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                text-shadow: 0 0 10px #ffd93d, 0 0 20px #ffd93d;
+            }
+            50% {
+                text-shadow: 0 0 20px #ffd93d, 0 0 40px #ffd93d, 0 0 60px #ffd93d;
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) rotate(45deg);
+            }
+        }
+
+        @keyframes slide {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(0.95); }
+        }
+
+        @keyframes particleFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-200px) scale(2);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3em; }
+            .hero h2 { font-size: 2.2em; }
+            .birthday-number { font-size: 7em; }
+            .cake { font-size: 100px; }
+            .card { padding: 25px; }
+            .card-icon { font-size: 3em; }
+            .photo-placeholder { font-size: 3.5em; }
+        }
+
+        .explosion {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .explosion-particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--x), var(--y)) scale(0);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div>
-    <h1>🎂 Happy Birthday, BRO 🎉</h1>
-    <p>Another year older, still a legend.</p>
-    <p>— from your hostel-proof friend 😤🔥</p>
-  </div>
+    <div class="animated-bg"></div>
+    
+    <div class="stars" id="stars"></div>
+    
+    <canvas id="fireworks"></canvas>
+
+    <div class="balloons">
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>🎉 HAPPY BIRTHDAY 🎉</h1>
+                <h2>GYAN!</h2>
+                <div class="birthday-number">17</div>
+                <p>January 27, 2025</p>
+            </div>
+        </div>
+
+        <div class="cake-section">
+            <div class="cake-container">
+                <div class="candle-flame">🔥</div>
+                <div class="cake" id="cake">🎂</div>
+            </div>
+        </div>
+
+        <div class="message-cards">
+            <div class="card">
+                <div class="card-icon">🚀</div>
+                <h3>Welcome to 17!</h3>
+                <p>We getting old, life getting progressively difficult, I hope you have a great year ahead filled with epic moments!</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">⭐</div>
+                <h3>You're Awesome!</h3>
+                <p>
+                You are 
+                <span style="text-decoration: line-through;">one of my</span>
+                <b> only </b>
+                friend I trust and love to be with, I'm thankful for you
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🎮</div>
+                <h3>Make It Epic!</h3>
+                <p>I'm gonna come out of hostel soon, then we gonna rock and vibe and build crazy things, do crazy things together!</p>
+            </div>
+        </div>
+
+        <div class="photo-gallery">
+            <h2 style="color: #ffd93d; font-size: 2.5em; margin-bottom: 20px;">Memories & Vibes 📸</h2>
+            <div class="photo-grid">
+                <div class="photo-placeholder">🎵</div>
+                <div class="photo-placeholder">💻</div>
+                <div class="photo-placeholder">🎮</div>
+                <div class="photo-placeholder">
+                    <svg viewBox="0 0 24 24" style="width:50px; height:50px; fill: white;">
+                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="countdown">
+            <h3>Never gonna forget 🌟</h3>
+            <p style="font-size: 1.2em; line-height: 2; color: #ddd; margin-top: 20px;">
+                1. All the coding ✨<br>
+                2. Discord 🤝<br>
+                3. Cracking and hacking things 🔥<br>
+                4. Calisthenics and workouts 💪<br>
+                5. All that coding 🎨<br>
+                6. Amount of reels 😄<br>
+                7. All the crazy talks 💬<br>
+                8. Crazy ideas 💡<br>
+                9. YOU 🫵<br>
+                10. Ma homie 🤜🤛<br>
+                11. Ma bro 🌍<br>
+                12. Ma pookie ❤️<br>
+            </p>
+        </div>
+
+        <div class="footer">
+            <h2>Cheers to 17! 🥳</h2>
+            <p>Hope your birthday is as legendary as you are, Gyan 🎊</p>
+            <p>Wishing you happy birthday in my absence. Hope this reaches you skull! 💀</p>
+            <p style="margin-top: 30px; font-size: 3.5em;">🎈🎂🎁🎉✨🎊🥳</p>
+        </div>
+    </div>
+
+    <script>
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for(let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function createConfetti() {
+            const colors = ['#ffd93d', '#ff6b6b', '#6bcf7f', '#4ecdc4', '#a78bfa', '#f093fb', '#667eea'];
+            const shapes = ['◆', '●', '■', '▲', '★'];
+            
+            for(let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.backgroundColor = 'transparent';
+                confetti.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                confetti.style.animationDelay = Math.random() * 6 + 's';
+                confetti.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                document.body.appendChild(confetti);
+            }
+        }
+
+        function initFireworks() {
+            const canvas = document.getElementById('fireworks');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const fireworks = [];
+            const particles = [];
+
+            class Firework {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = canvas.height;
+                    this.targetY = Math.random() * canvas.height * 0.5;
+                    this.speed = Math.random() * 3 + 2;
+                    this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                }
+
+                update() {
+                    this.y -= this.speed;
+                    if(this.y <= this.targetY) {
+                        this.explode();
+                        return false;
+                    }
+                    return true;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+
+                explode() {
+                    for(let i = 0; i < 50; i++) {
+                        particles.push(new Particle(this.x, this.y, this.color));
+                    }
+                }
+            }
+
+            class Particle {
+                constructor(x, y, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.color = color;
+                    this.velocity = {
+                        x: (Math.random() - 0.5) * 8,
+                        y: (Math.random() - 0.5) * 8
+                    };
+                    this.gravity = 0.1;
+                    this.alpha = 1;
+                    this.decay = Math.random() * 0.02 + 0.01;
+                }
+
+                update() {
+                    this.velocity.y += this.gravity;
+                    this.x += this.velocity.x;
+                    this.y += this.velocity.y;
+                    this.alpha -= this.decay;
+                    return this.alpha > 0;
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.globalAlpha = this.alpha;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }
+
+            function animate() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                if(Math.random() < 0.05) {
+                    fireworks.push(new Firework());
+                }
+
+                for(let i = fireworks.length - 1; i >= 0; i--) {
+                    if(!fireworks[i].update()) {
+                        fireworks.splice(i, 1);
+                    } else {
+                        fireworks[i].draw();
+                    }
+                }
+
+                for(let i = particles.length - 1; i >= 0; i--) {
+                    if(!particles[i].update()) {
+                        particles.splice(i, 1);
+                    } else {
+                        particles[i].draw();
+                    }
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+
+        function createExplosion(x, y) {
+            const colors = ['#ffd93d', '#ff6b6b', '#6bcf7f', '#4ecdc4', '#a78bfa', '#f093fb'];
+            const explosion = document.createElement('div');
+            explosion.className = 'explosion';
+            explosion.style.left = x + 'px';
+            explosion.style.top = y + 'px';
+            document.body.appendChild(explosion);
+
+            for(let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'explosion-particle';
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                const angle = (Math.PI * 2 * i) / 30;
+                const velocity = Math.random() * 100 + 50;
+                const x = Math.cos(angle) * velocity;
+                const y = Math.sin(angle) * velocity;
+                
+                particle.style.setProperty('--x', x + 'px');
+                particle.style.setProperty('--y', y + 'px');
+                
+                explosion.appendChild(particle);
+            }
+
+            setTimeout(() => explosion.remove(), 1000);
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            if(Math.random() < 0.3) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = e.clientX + 'px';
+                particle.style.top = e.clientY + 'px';
+                particle.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                document.body.appendChild(particle);
+
+                setTimeout(() => particle.remove(), 3000);
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            createExplosion(e.clientX, e.clientY);
+        });
+
+        const cake = document.getElementById('cake');
+        cake.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const rect = cake.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            
+            for(let i = 0; i < 5; i++) {
+                setTimeout(() => createExplosion(x, y), i * 100);
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if(rect.top < window.innerHeight * 0.8) {
+                    card.style.opacity = '1';
+                }
+            });
+        });
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `translateY(-20px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        document.querySelectorAll('.photo-placeholder').forEach(photo => {
+            photo.addEventListener('mouseenter', () => {
+                const rect = photo.getBoundingClientRect();
+                for(let i = 0; i < 10; i++) {
+                    setTimeout(() => {
+                        const particle = document.createElement('div');
+                        particle.className = 'particle';
+                        particle.style.left = (rect.left + Math.random() * rect.width) + 'px';
+                        particle.style.top = (rect.top + Math.random() * rect.height) + 'px';
+                        particle.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                        document.body.appendChild(particle);
+                        setTimeout(() => particle.remove(), 3000);
+                    }, i * 50);
+                }
+            });
+        });
+
+        function launchCelebration() {
+            for(let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createExplosion(
+                        Math.random() * window.innerWidth,
+                        Math.random() * window.innerHeight * 0.5
+                    );
+                }, i * 300);
+            }
+        }
+
+        createStars();
+        createConfetti();
+        initFireworks();
+        
+        setInterval(launchCelebration, 10000);
+        setTimeout(launchCelebration, 1000);
+
+        setInterval(() => {
+            if(Math.random() < 0.3) {
+                createExplosion(
+                    Math.random() * window.innerWidth,
+                    Math.random() * window.innerHeight
+                );
+            }
+        }, 3000);
+
+        setInterval(() => {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = '-10px';
+            particle.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 3000);
+        }, 200);
+
+        setTimeout(() => {
+            const messages = [
+                "🎉 Happy Birthday Gyan! 🎉",
+                "🎂 Make a wish! 🎂",
+                "✨ You're awesome! ✨",
+                "🎈 Party time! 🎈"
+            ];
+            console.log(messages[Math.floor(Math.random() * messages.length)]);
+        }, 2000);
+    </script>
 </body>
 </html>
