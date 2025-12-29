@@ -2,6 +2,19 @@ import os
 import requests
 import smtplib
 from email.message import EmailMessage
+import os
+from datetime import datetime
+import pytz
+
+ist = pytz.timezone("Asia/Kolkata")
+now = datetime.now(ist)
+
+lock_file = "sent.lock"
+
+if os.path.exists(lock_file):
+    print("Already sent. Exiting.")
+    exit(0)
+
 
 # ---------- DISCORD ----------
 def send_discord():
@@ -69,7 +82,12 @@ def send_email():
         server.login(os.environ["EMAIL_USER"], os.environ["EMAIL_PASS"])
         server.send_message(msg)
 
-
+if now.strftime("%m-%d") == "01-27":
+    # send discord + email here
+    send_discord()
+    send_email()
+    open(lock_file, "w").write("sent")
+    
 if __name__ == "__main__":
     send_discord()
     send_email()
