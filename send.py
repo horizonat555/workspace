@@ -8,7 +8,7 @@ def send_discord():
     webhook = os.environ["DISCORD_WEBHOOK"]
 
     payload = {
-        "content": "🎉 **HAPPY BIRTHDAY BRO!** 🎂\nSurprise 👉 https://yourusername.github.io/birthday-site"
+        "content": "🎉 <@797057126707101716> **HAPPY BIRTHDAY BRO!** 🎂\nSurprise 👉 https://horizonat555.github.io/workspace/"
     }
 
     r = requests.post(webhook, json=payload)
@@ -28,7 +28,7 @@ def send_email():
         "I have insane level of faith in you\n\n"
         "Never gonna forget you man 🎂✨\n\n"
         "Surprise:\n"
-        "https://yourusername.github.io/birthday-site\n\n"
+        "https://horizonat555.github.io/workspace/"
         "- Pavan Hegde"
     )
 
@@ -45,7 +45,7 @@ def send_email():
         <img src="cid:bdayimg" style="max-width:100%; border-radius:16px; margin:20px 0;" />
 
         <p>
-          👉 <a href="https://yourusername.github.io/birthday-site">
+          👉 <a href="https://horizonat555.github.io/workspace/">
           Here’s the surprise [CLICK HEREEEEEEEEEE]
           </a>
         </p>
@@ -71,6 +71,6 @@ def send_email():
 
 
 if __name__ == "__main__":
-    #send_discord()
+    send_discord()
     send_email()
     print("Birthday wishes sent 🚀")
